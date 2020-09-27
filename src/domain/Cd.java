@@ -1,6 +1,6 @@
 package domain;
 
-public class Cd extends Product{
+public class Cd extends Product {
 
     public Cd(String title, String id, String type) {
         super(title, id, type);
