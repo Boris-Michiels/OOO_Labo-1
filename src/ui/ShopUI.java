@@ -19,10 +19,16 @@ public class ShopUI {
                 String id = JOptionPane.showInputDialog("Enter the id:");
                 String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
                 Product product= null;
-                if (type.equals("G")) {
-                    product = new Game(title, id, type);
-                } else if (type.equals("M")) {
-                    product = new Movie(title, id, type);
+                switch (type) {
+                    case "G":
+                        product = new Game(title, id, type);
+                        break;
+                    case "M":
+                        product = new Movie(title, id, type);
+                        break;
+                    case "CD":
+                        product = new Cd(title, id, type);
+                        break;
                 }
                 if (product != null) {
                     shop.addProduct(product);
