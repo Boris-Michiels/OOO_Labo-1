@@ -19,7 +19,10 @@ public class ShopUI {
                 String id = JOptionPane.showInputDialog("Enter the id:");
                 String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
                 Product product = null;
+
                 switch (type) {
+                    default:
+                        JOptionPane.showMessageDialog(null, "This product is not supported");
                     case "G":
                         product = new Game(title, id, type);
                         break;

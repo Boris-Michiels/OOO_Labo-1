@@ -1,7 +1,7 @@
 package domain;
 
 public abstract class Product {
-    private String title, type, id;
+    private final String title, type, id;
 
     public Product(String title, String id, String type) {
         this.title = title;
