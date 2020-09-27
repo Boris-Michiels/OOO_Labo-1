@@ -2,8 +2,12 @@ package domain;
 
 public class Cd extends Product {
 
-    public Cd(String title, String id, String type) {
-        super(title, id, type);
+    public Cd() {
+
+    }
+
+    public Cd(String title, String id) {
+        super(title, id);
     }
 
     public double getPrice(int days) {

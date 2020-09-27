@@ -1,24 +1,38 @@
 package domain;
 
 public abstract class Product {
-    private final String title, type, id;
+    private String title;
+    private int id;
 
-    public Product(String title, String id, String type) {
+    public Product() {
+
+    }
+
+    public Product(String title, String id) {
+        setTitle(title);
+        setId(id);
+    }
+
+    public void setTitle(String title) {
+        if (title == null || title.isEmpty()) throw new IllegalArgumentException("Title is empty");
         this.title = title;
-        this.id = id;
-        this.type = type;
+    }
+
+    public void setId(String id) {
+        if (id == null || id.isEmpty()) throw new IllegalArgumentException("Id is empty");
+        try {
+            this.id = Integer.parseInt(id);
+        } catch (NumberFormatException ignored) {
+            throw new IllegalArgumentException("Not a number");
+        }
     }
 
     public String getTitle() {
         return this.title;
     }
 
-    public String getId() {
+    public int getId() {
         return this.id;
-    }
-
-    public String getType() {
-        return this.type;
     }
 
     public abstract double getPrice(int days);

@@ -2,8 +2,12 @@ package domain;
 
 public class Movie extends Product {
 
-    public Movie(String title, String id, String type) {
-        super(title, id, type);
+    public Movie() {
+
+    }
+
+    public Movie(String title, String id) {
+        super(title, id);
     }
 
     public double getPrice(int days) {

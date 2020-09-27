@@ -2,8 +2,12 @@ package domain;
 
 public class Game extends Product {
 
-    public Game(String title, String id, String type) {
-        super(title, id, type);
+    public Game() {
+
+    }
+
+    public Game(String title, String id) {
+        super(title, id);
     }
 
     public double getPrice(int days) {
