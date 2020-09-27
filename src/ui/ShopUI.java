@@ -1,7 +1,6 @@
 package ui;
 
-import domain.Product;
-import domain.Shop;
+import domain.*;
 
 import javax.swing.JOptionPane;
 
@@ -19,8 +18,15 @@ public class ShopUI {
                 String title = JOptionPane.showInputDialog("Enter the title:");
                 String id = JOptionPane.showInputDialog("Enter the id:");
                 String type = JOptionPane.showInputDialog("Enter the type (M for movie/G for game):");
-                Product product = new Product(title, id, type);
-                shop.addProduct(product);
+                Product product= null;
+                if (type.equals("G")) {
+                    product = new Game(title, id, type);
+                } else if (type.equals("M")) {
+                    product = new Movie(title, id, type);
+                }
+                if (product != null) {
+                    shop.addProduct(product);
+                }
             } else if (choice == 2) {
                 String id = JOptionPane.showInputDialog("Enter the id:");
                 shop.showProduct(id);
