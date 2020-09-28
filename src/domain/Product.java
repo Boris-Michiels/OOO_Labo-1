@@ -19,12 +19,13 @@ public abstract class Product implements Comparable<Product> {
     }
 
     public void setId(String id) {
-        if (id == null || id.isEmpty()) throw new IllegalArgumentException("Id is empty");
-        try {
+        if (isValidId(id)) {
             this.id = Integer.parseInt(id);
-        } catch (NumberFormatException ignored) {
-            throw new IllegalArgumentException("Not a number");
-        }
+        } else throw new IllegalArgumentException("Not a valid Id");
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -32,7 +33,7 @@ public abstract class Product implements Comparable<Product> {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public abstract double getPrice(int days);
@@ -50,5 +51,17 @@ public abstract class Product implements Comparable<Product> {
             }
         }
         return c;
+    }
+
+    public static boolean isValidId(String ids) {
+        boolean valid = false;
+        if (!(ids == null) && !ids.isEmpty()) {
+            try {
+                int id = Integer.parseInt(ids);
+                if (id >= 0) valid = true;
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        return valid;
     }
 }

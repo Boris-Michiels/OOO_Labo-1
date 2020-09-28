@@ -54,15 +54,13 @@ public class ShopUI {
                     if (product == null) throw new IllegalArgumentException("Product is null");
                     String title = JOptionPane.showInputDialog("Enter the title:");
                     product.setTitle(title);
-                    String id = JOptionPane.showInputDialog("Enter the id:");
-                    product.setId(id);
                     shop.addProduct(product);
                 } catch (IllegalArgumentException e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             } else if (choice == 2) {
                 String id = null;
-                while (!isValidId(id)) {
+                while (!Product.isValidId(id)) {
                     id = JOptionPane.showInputDialog("Enter the id:");
                     try {
                         if (id == null) break;
@@ -73,7 +71,7 @@ public class ShopUI {
                 }
             } else if (choice == 3) {
                 String id = null;
-                while (!isValidId(id)) {
+                while (!Product.isValidId(id)) {
                     id = JOptionPane.showInputDialog("Enter the id:");
                     try {
                         if (id == null) break;
@@ -86,17 +84,5 @@ public class ShopUI {
                 shop.showAllProducts();
             }
         }
-    }
-
-    public static boolean isValidId(String ids) {
-        boolean valid = false;
-        if (!(ids == null) && !ids.isEmpty()) {
-            try {
-                int id = Integer.parseInt(ids);
-                if (id >= 0) valid = true;
-            } catch (NumberFormatException ignored) {
-            }
-        }
-        return valid;
     }
 }

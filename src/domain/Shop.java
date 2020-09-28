@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 public class Shop {
     private ArrayList<Product> products;
+    private static int id = 0;
 
     public Shop() {
         products = new ArrayList<>();
@@ -17,7 +18,9 @@ public class Shop {
         if (findProduct(Integer.toString(product.getId())) != null) {
             throw new IllegalArgumentException("Product id already in shop");
         }
+        product.setId(id);
         products.add(product);
+        id++;
     }
 
     public void showProduct(String id) {
