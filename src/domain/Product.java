@@ -39,8 +39,16 @@ public abstract class Product implements Comparable<Product> {
 
     public int compareTo(Product p) {
         int c = 0;
-        c = this.getTitle().compareTo(p.getTitle());
-        if (c == 0) c = this.getId() - p.getId();
+        if (p.getClass() == this.getClass()) {
+            c = this.getTitle().compareTo(p.getTitle());
+            if (c == 0) c = this.getId() - p.getId();
+        } else {
+            if (this instanceof Movie || (this instanceof Game && p instanceof Cd)) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
         return c;
     }
 }
