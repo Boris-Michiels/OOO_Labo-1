@@ -3,7 +3,6 @@ package ui;
 import domain.*;
 
 import javax.swing.JOptionPane;
-import java.nio.channels.ScatteringByteChannel;
 
 public class ShopUI {
     public static void main(String[] args) {
@@ -57,10 +56,10 @@ public class ShopUI {
                     product.setTitle(title);
                     String id = JOptionPane.showInputDialog("Enter the id:");
                     product.setId(id);
+                    shop.addProduct(product);
                 } catch (IllegalArgumentException e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
-                shop.addProduct(product);
             } else if (choice == 2) {
                 String id = null;
                 while (!isValidId(id)) {

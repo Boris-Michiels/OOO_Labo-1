@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
@@ -13,6 +14,9 @@ public class Shop {
 
     public void addProduct(Product product) {
         if (product == null) throw new IllegalArgumentException("Product is null");
+        if (findProduct(Integer.toString(product.getId())) != null) {
+            throw new IllegalArgumentException("Product id already in shop");
+        }
         products.add(product);
     }
 
@@ -39,10 +43,14 @@ public class Shop {
     }
 
     public void showAllProducts() {
+        ArrayList<Product> productsSorted = new ArrayList<>();
+        productsSorted.addAll(products);
+        Collections.sort(productsSorted);
+
         String movies = "Movies:\n";
         String games = "\nGames:\n";
         String cds = "\nCDs:\n";
-        for (Product p : products) {
+        for (Product p : productsSorted) {
             String pString = "Title: " + String.format("%-30s", p.getTitle()) + "Id: " + p.getId() + "\n";
             if (p instanceof Movie) {
                 movies += pString;

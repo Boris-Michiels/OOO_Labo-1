@@ -1,6 +1,6 @@
 package domain;
 
-public abstract class Product {
+public abstract class Product implements Comparable<Product> {
     private String title;
     private int id;
 
@@ -36,4 +36,11 @@ public abstract class Product {
     }
 
     public abstract double getPrice(int days);
+
+    public int compareTo(Product p) {
+        int c = 0;
+        c = this.getTitle().compareTo(p.getTitle());
+        if (c == 0) c = this.getId() - p.getId();
+        return c;
+    }
 }
