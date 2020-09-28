@@ -19,9 +19,8 @@ public abstract class Product implements Comparable<Product> {
     }
 
     public void setId(String id) {
-        if (isValidId(id)) {
-            this.id = Integer.parseInt(id);
-        } else throw new IllegalArgumentException("Not a valid Id");
+        if (!isValidId(id)) throw new IllegalArgumentException("Not a valid Id");
+        this.id = Integer.parseInt(id);
     }
 
     public void setId(int id) {

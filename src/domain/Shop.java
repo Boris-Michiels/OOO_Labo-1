@@ -15,9 +15,6 @@ public class Shop {
 
     public void addProduct(Product product) {
         if (product == null) throw new IllegalArgumentException("Product is null");
-        if (findProduct(Integer.toString(product.getId())) != null) {
-            throw new IllegalArgumentException("Product id already in shop");
-        }
         product.setId(id);
         products.add(product);
         id++;
@@ -68,12 +65,8 @@ public class Shop {
 
     public Product findProduct(String ids) {
         int id;
-        try {
-            id = Integer.parseInt(ids);
-            if (id < 0) throw new IllegalArgumentException();
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Not a valid id");
-        }
+        if (!Product.isValidId(ids)) throw new IllegalArgumentException("Not a valid Id");
+        id = Integer.parseInt(ids);
         for (Product product : products) {
             if (product.getId() == id) {
                 return product;
