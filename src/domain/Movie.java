@@ -1,11 +1,10 @@
 package domain;
 
-public class Movie extends Product{
-
-
+public class Movie extends Product {
     public Movie(String title, String id) {
         super(title, id);
     }
+
     @Override
     public double getPrice(int days) {
         double price = 5;

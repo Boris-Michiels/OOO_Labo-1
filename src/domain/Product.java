@@ -14,7 +14,8 @@ public abstract class Product {
     }
 
     public void setTitle(String title) {
-        if(title.trim().isEmpty() ||title == null) throw new IllegalArgumentException("Title can't be empty.");
+        if(title.trim().isEmpty() || title == null) throw new IllegalArgumentException("Title can't be empty.");
+
         this.title = title;
     }
 
@@ -23,7 +24,8 @@ public abstract class Product {
     }
 
     public void setId(String id) {
-        if(id.trim().isEmpty() ||id == null) throw new IllegalArgumentException("Id can't be empty.");
+        if(id.trim().isEmpty() || id == null) throw new IllegalArgumentException("Id can't be empty.");
+
         this.id = id;
     }
 
